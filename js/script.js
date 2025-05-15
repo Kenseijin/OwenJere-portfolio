@@ -22,46 +22,30 @@ window.onscroll = () => {
         if (top >= offset && top < offset + height) {
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                document.querySelector('header nav a[href*="' + id + '"]').classList.add('active');
+                document.querySelector(`header nav a[href*='${id}']`).classList.add('active');
             });
         }
     });
 
-    // Optional: Close menu on scroll (for mobile UX)
+    // Sticky navbar
+    let header = document.querySelector('header');
+    header.classList.toggle('sticky', window.scrollY > 100);
+
+    // Close menu on scroll
     menuIcon.classList.remove('bx-x');
     navbar.classList.remove('active');
 };
 
-
 // ScrollReveal Configurations
 ScrollReveal({
-  reset: true,              // Animations repeat on scroll up/down
-  distance: '60px',         // Distance element moves
-  duration: 1000,           // Animation duration in ms
-  delay: 200                // Delay before animation starts
+    reset: true,
+    distance: '80px',
+    duration: 2000,
+    delay: 200
 });
 
-// Targeting elements
 ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
 ScrollReveal().reveal('.home-img, .services-box, .portfolio-box, .contact form', { origin: 'bottom' });
 ScrollReveal().reveal('.home-content h1, .about-img', { origin: 'left' });
 ScrollReveal().reveal('.home-content p, .about-content', { origin: 'right' });
 
-//toogle themes
-const themeToggle = document.querySelector('#theme-toggle');
-
-if (localStorage.getItem("theme") === "light") {
-  document.body.classList.add("light-mode");
-  themeToggle.classList.replace('bx-moon', 'bx-sun');
-}
-
-themeToggle.onclick = () => {
-  document.body.classList.toggle('light-mode');
-  if (document.body.classList.contains('light-mode')) {
-    themeToggle.classList.replace('bx-moon', 'bx-sun');
-    localStorage.setItem("theme", "light");
-  } else {
-    themeToggle.classList.replace('bx-sun', 'bx-moon');
-    localStorage.setItem("theme", "dark");
-  }
-};

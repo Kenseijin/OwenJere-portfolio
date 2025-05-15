@@ -1,33 +1,32 @@
-const phrases = ["IT Specialist", "Web Developer", "System Admin", "Tech Savvy"];
-const el = document.getElementById("typed-text");
-let phraseIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let delay = 150;
+document.addEventListener("DOMContentLoaded", function () {
+    // Typing effect for hero/home section
+    const typed = new Typed('.multiple-text', {
+        strings: ["IT Specialist", "Web Developer", "System Admin", "Tech Savvy"],
+        typeSpeed: 100,
+        backSpeed: 100,
+        backDelay: 1000,
+        loop: true
+    });
 
-function type() {
-  const current = phrases[phraseIndex];
-  el.textContent = current.substring(0, charIndex);
+    // Theme Toggle
+    const themeToggle = document.querySelector('#theme-toggle');
 
-  if (!isDeleting) {
-    if (charIndex < current.length) {
-      charIndex++;
-    } else {
-      isDeleting = true;
-      delay = 1000;
+    if (themeToggle) {
+        // Apply saved theme
+        if (localStorage.getItem("theme") === "light") {
+            document.body.classList.add("light-mode");
+            themeToggle.classList.replace('bx-moon', 'bx-sun');
+        }
+
+        themeToggle.onclick = () => {
+            document.body.classList.toggle('light-mode');
+            if (document.body.classList.contains('light-mode')) {
+                themeToggle.classList.replace('bx-moon', 'bx-sun');
+                localStorage.setItem("theme", "light");
+            } else {
+                themeToggle.classList.replace('bx-sun', 'bx-moon');
+                localStorage.setItem("theme", "dark");
+            }
+        };
     }
-  } else {
-    if (charIndex > 0) {
-      charIndex--;
-    } else {
-      isDeleting = false;
-      phraseIndex = (phraseIndex + 1) % phrases.length;
-    }
-  }
-
-  setTimeout(type, isDeleting ? 50 : delay);
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  type();
 });

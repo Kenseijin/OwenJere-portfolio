@@ -6,16 +6,14 @@
 	<!--Box icons + CSS-->
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 	<title>Owen's Profile | Portfolio</title>
 </head>
 <body>
 
 <header class="header">
-	<a href="#" class="logo">
-  Owen Jere | <span id="typed-text"></span><span class="cursor">|</span>
-</a>
+	<a href="#" class="logo">Owen's <br><span class="logo-break">Portfolio |</span></a>
 
-	<i class='bx bx-menu-alt-left' id="menu-icon"></i>
 	<nav class="nav-bar"> 
 		<a href="#home" class="active">Home</a>
 		<a href="#about">About</a>
@@ -23,7 +21,11 @@
 		<a href="#portfolio">Portfolio</a>
 		<a href="#contact-us">Contact</a>
 	</nav>
-	<i class="bx bx-moon" id="theme-toggle"></i>
+	<div class="toggle-icons">
+  <i class="bx bx-moon" id="theme-toggle"></i>
+  <i class="bx bx-menu" id="menu-icon"></i>
+</div>
+
 </header>
 
     			<!--Home section-->
@@ -31,7 +33,7 @@
 	<div class="home-content">
 		<h3>Hie, my name is</h3>
 		<h1>Owen Jere</h1>
-		<h3> But call me your favorite <span>web developer</span></h3>
+		<h3> But call me your favorite <span class="multiple-text"></span></h3>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -198,8 +200,13 @@
 		<a href="#home"><i class='bx bxs-chevrons-up'></i></a>
 	</div>
 </footer>
-<script src="https://unpkg.com/scrollreveal"></script>
-<script type="text/javascript" src="js/script.js"></script>
+<!-- Scroll & Theme scripts -->
+<script src="js/script.js"></script>
+
+<!-- Load Typed.js first -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+<!-- Then load your own script that uses Typed -->
 <script src="js/typingEffect.js"></script>
 
 </body>
